@@ -4,19 +4,21 @@ import {
     RouterProvider,
     Route,
     createRoutesFromElements,
-  } from "react-router-dom";
-  
-  import Home from "../../pages/Home/Home";
-  import Abouth from "../../pages/Abouth";
-  import Users from '../../pages/Users'
-  import RouteLayout from "../../pages/RouteLayout";
-  
+} from "react-router-dom";
+
+import Home from "../../pages/Home/Home";
+import Abouth from "../../pages/Abouth";
+import Users from '../../pages/Users'
+import RouteLayout from "../../pages/RouteLayout";
+import Detail from '../../pages/Detail';
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RouteLayout />}>
             <Route index element={<Home />} />
             <Route path="/abouth" element={<Abouth />} />
             <Route path="/users" element={<Users />} />
+            <Route path='/char/:char_id' element={<Detail />} />
         </Route>
     )
 );
