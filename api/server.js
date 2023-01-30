@@ -6,6 +6,7 @@ const { json } = require('body-parser');
 const { nanoid } = require('nanoid');
 
 const characters = require('./characters.json')
+const quotes = require('./quotes.json')
 
 dotenv.config({ path: './config.env' });
 
@@ -14,7 +15,13 @@ const app = express();
 app.use(cors());
 app.use(json());
 
+app.all('*', function (req, res, next) {
+    res.set('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.get('/characters', (req, res) => res.send(characters));
+app.get('/quotes', (req, res) => res.send(quotes));
 
 //   app.post('/characters', (req, res) => {
 //     const note = { ...req.body, id: nanoid() };

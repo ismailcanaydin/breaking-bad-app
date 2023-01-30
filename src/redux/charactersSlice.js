@@ -11,19 +11,19 @@ const charactersSlice = createSlice({
     name: 'characters',
     initialState: {
         items: [],
-        isLoading: false,
+        status: 'idle',
     },
     reducers: {},
     extraReducers: {
         [fetchCaracters.pending]: (state, action) => {
-            state.isLoading = true
+            state.status = 'loading'
         },
         [fetchCaracters.fulfilled]: (state, action) => {
             state.items = action.payload
-            state.isLoading = false
+            state.status = 'succeeded'
         },
         [fetchCaracters.rejected]: (state, action) => {
-            state.isLoading = false
+            state.status = 'failed'
             state.error = action.error.message
         },
     }

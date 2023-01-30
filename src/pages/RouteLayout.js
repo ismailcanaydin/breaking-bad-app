@@ -1,21 +1,20 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
+// import '.././index.css'
 
 function RouteLayout() {
     return (
         <div>
-            <ul>
-                <li>
-                    <Link to={'/'}>Home</Link>
-                </li>
-                <li>
-                    <Link to={'/abouth'}>Abouth</Link>
-                </li>
-                <li>
-                    <Link to={'/users'}>Users</Link>
-                </li>
-            </ul>
-
+            <nav>
+                <ul>
+                    <li>
+                        <Link to={'/'}>Characters</Link>
+                    </li>
+                    <li>
+                        <Link to={'/quotes'}>Quotes</Link>
+                    </li>
+                </ul>
+            </nav>
             <main>
                 <Outlet />
             </main>

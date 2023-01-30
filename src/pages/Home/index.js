@@ -11,16 +11,18 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   const characters = useSelector((state) => state.characters.items)
-  const isLoading = useSelector((state) => state.characters.isLoading)
+  const status = useSelector((state) => state.characters.status)
   const error = useSelector((state) => state.characters.error)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchCaracters())
-  }, [dispatch])
+    if (status === 'idle') {
+      dispatch(fetchCaracters())
+    }
+  }, [dispatch, status])
 
-  if (isLoading) {
+  if (status === 'loading') {
     return <Loading />
   }
 
